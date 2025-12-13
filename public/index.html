@@ -579,10 +579,10 @@
 
     // ⚠️ 楽天アフィリエイトリンクのテンプレートを定義 (あなたのリンクに書き換えてください)
     const RAKUTEN_AFFILIATE_LINK_TEMPLATE = "https://hb.afl.rakuten.co.jp/hgc/4f0b04d7.de90e954.4f0b04d8.eed36ea2/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F"; 
-    // ⚠️ Amazonアソシエイトリンクのテンプレートを定義 (あなたのIDとトラッキングタグを含めてください)
+    // ⚠️ Amazonアソシエイトリンクのテンプレートを定義 (あなたのIDとトラッキングタグを含めてください) 
     const AMAZON_AFFILIATE_LINK_TEMPLATE = "https://www.amazon.co.jp/s?k={keyword}&tag=Kampo0a-22"; 
-    // ⚠️ その他のアフィリエイト（A8など）のリンクのテンプレートを定義
-    const OTHER_AFFILIATE_LINK_TEMPLATE = "https://www.google.com/search?q="; 
+    // ⚠️ その他のアフィリエイト（A8など）のリンクのテンプレートを定義 (A8経由でマツキヨを検索)
+    const OTHER_AFFILIATE_LINK_TEMPLATE = "https://px.a8.net/svt/ejp?a8mat=45KE8Q+46MOTU+5QFO+5YJRM&a8ejp=0.0&a8hac=0&URL=https%3A%2F%2Fonline.matsukiyococokara.com%2Fstore%2Fproducts%2Flist%3Fkeyword%3D"; 
 
     checkBtn.addEventListener("click", () => {
       const vitalityInput = document.querySelector('input[name="vitality"]:checked')?.value;
@@ -691,8 +691,8 @@
             // アフィリエイトリンクを生成
             const search_query = encodeURIComponent(k.name);
             const rakutenLink = RAKUTEN_AFFILIATE_LINK_TEMPLATE + search_query;
-            const amazonLink = AMAZON_AFFILIATE_LINK_TEMPLATE.replace('{keyword}', search_query);
-            const otherLink = OTHER_AFFILIATE_LINK_TEMPLATE + search_query + "+公式";
+            const amazonLink = AMAZON_AFFILIATE_LINK_TEMPLATE.replace('{keyword}', encodeURIComponent(k.name));
+            const otherLink = OTHER_AFFILIATE_LINK_TEMPLATE + search_query;
 
             let k_vitality_desc;
             if (k.sho_rank.vitality <= 2) {
