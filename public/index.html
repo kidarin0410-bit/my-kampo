@@ -580,7 +580,7 @@
     // ⚠️ 楽天アフィリエイトリンクのテンプレートを定義 (あなたのリンクに書き換えてください)
     const RAKUTEN_AFFILIATE_LINK_TEMPLATE = "https://hb.afl.rakuten.co.jp/hgc/4f0b04d7.de90e954.4f0b04d8.eed36ea2/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F"; 
     // ⚠️ Amazonアソシエイトリンクのテンプレートを定義 (あなたのIDとトラッキングタグを含めてください)
-    const AMAZON_AFFILIATE_LINK_TEMPLATE = "https://www.amazon.co.jp/s?k="; 
+    const AMAZON_AFFILIATE_LINK_TEMPLATE = "https://www.amazon.co.jp/s?k={keyword}&tag=Kampo0a-22"; 
     // ⚠️ その他のアフィリエイト（A8など）のリンクのテンプレートを定義
     const OTHER_AFFILIATE_LINK_TEMPLATE = "https://www.google.com/search?q="; 
 
@@ -691,7 +691,7 @@
             // アフィリエイトリンクを生成
             const search_query = encodeURIComponent(k.name);
             const rakutenLink = RAKUTEN_AFFILIATE_LINK_TEMPLATE + search_query;
-            const amazonLink = AMAZON_AFFILIATE_LINK_TEMPLATE + search_query;
+            const amazonLink = AMAZON_AFFILIATE_LINK_TEMPLATE.replace('{keyword}', search_query);
             const otherLink = OTHER_AFFILIATE_LINK_TEMPLATE + search_query + "+公式";
 
             let k_vitality_desc;
